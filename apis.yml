@@ -1,0 +1,35 @@
+aid: apache-guacamole
+name: Apache Guacamole
+description: >-
+  Apache Guacamole is a clientless remote desktop gateway that supports standard protocols like VNC, RDP, and SSH. It requires no plugins or client software and provides access to remote desktops through a web browser with a comprehensive REST API for management.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Remote Desktop
+  - VNC
+  - RDP
+  - SSH
+  - Web Gateway
+created: '2026-03-16'
+modified: '2026-03-16'
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/apache-guacamole/refs/heads/main/apis.yml
+specificationVersion: '0.19'
+apis:
+  - aid: apache-guacamole:apache-guacamole-rest-api
+    name: Apache Guacamole REST API
+    description: >-
+      The Guacamole REST API provides endpoints for managing connections, users, groups, sharing profiles, and authentication, along with a JavaScript client API for embedding remote desktop access and an extension API for custom authentication providers.
+    humanURL: https://guacamole.apache.org/doc/gug/guacamole-rest-api.html
+    tags:
+      - REST
+      - Remote Desktop
+      - Authentication
+    properties:
+      - type: Documentation
+        url: https://guacamole.apache.org/doc/gug/guacamole-rest-api.html
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com
