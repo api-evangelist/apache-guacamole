@@ -7,10 +7,10 @@ position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Remote Desktop
-  - VNC
   - RDP
+  - Remote Desktop
   - SSH
+  - VNC
   - Web Gateway
 created: '2026-03-16'
 modified: '2026-03-16'
@@ -24,9 +24,9 @@ apis:
       The Guacamole REST API provides endpoints for managing connections, users, groups, sharing profiles, and authentication, along with a JavaScript client API for embedding remote desktop access and an extension API for custom authentication providers.
     humanURL: https://guacamole.apache.org/doc/gug/guacamole-rest-api.html
     tags:
-      - REST
-      - Remote Desktop
       - Authentication
+      - Remote Desktop
+      - REST
     properties:
       - type: Documentation
         url: https://guacamole.apache.org/doc/gug/guacamole-rest-api.html
