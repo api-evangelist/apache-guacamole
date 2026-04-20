@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-guacamole/refs/heads/main/json-structure/guacamole-rest-connection-history-entry-structure.json",
+  "name": "ConnectionHistoryEntry",
+  "description": "Historical record of a completed or active connection",
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "type": "string",
+      "description": "History entry identifier"
+    },
+    "connectionIdentifier": {
+      "type": "string",
+      "description": "Associated connection ID"
+    },
+    "connectionName": {
+      "type": "string",
+      "description": "Name of the connection"
+    },
+    "username": {
+      "type": "string",
+      "description": "Username who made the connection"
+    },
+    "startDate": {
+      "type": "int64",
+      "description": "Connection start time in milliseconds"
+    },
+    "endDate": {
+      "type": "int64",
+      "description": "Connection end time in milliseconds (null if still active)"
+    }
+  }
+}

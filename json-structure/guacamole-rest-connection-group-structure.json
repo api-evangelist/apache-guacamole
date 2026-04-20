@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-guacamole/refs/heads/main/json-structure/guacamole-rest-connection-group-structure.json",
+  "name": "ConnectionGroup",
+  "description": "A group organizing connections and other connection groups",
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "type": "string",
+      "description": "Unique group identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Group name"
+    },
+    "type": {
+      "type": "string",
+      "description": "Group type (ORGANIZATIONAL or BALANCING)"
+    },
+    "parentIdentifier": {
+      "type": "string",
+      "description": "Parent group identifier"
+    },
+    "activeConnections": {
+      "type": "int32",
+      "description": "Total active connections in this group"
+    }
+  }
+}

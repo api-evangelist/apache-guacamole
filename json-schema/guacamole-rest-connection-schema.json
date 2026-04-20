@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-guacamole/refs/heads/main/json-schema/guacamole-rest-connection-schema.json",
+  "title": "Connection",
+  "description": "Remote desktop connection configuration",
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "type": "string",
+      "description": "Unique connection identifier",
+      "example": "1"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable connection name",
+      "example": "My RDP Server"
+    },
+    "protocol": {
+      "type": "string",
+      "description": "Remote desktop protocol",
+      "enum": [
+        "rdp",
+        "vnc",
+        "ssh",
+        "telnet",
+        "kubernetes"
+      ],
+      "example": "rdp"
+    },
+    "parentIdentifier": {
+      "type": "string",
+      "description": "Parent connection group identifier (ROOT for top-level)",
+      "example": "ROOT"
+    },
+    "activeConnections": {
+      "type": "integer",
+      "description": "Number of active sessions for this connection",
+      "example": "0"
+    },
+    "parameters": {
+      "type": "object",
+      "description": "Protocol-specific connection parameters",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  }
+}

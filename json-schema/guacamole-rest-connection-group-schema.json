@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-guacamole/refs/heads/main/json-schema/guacamole-rest-connection-group-schema.json",
+  "title": "ConnectionGroup",
+  "description": "A group organizing connections and other connection groups",
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "type": "string",
+      "description": "Unique group identifier",
+      "example": "1"
+    },
+    "name": {
+      "type": "string",
+      "description": "Group name",
+      "example": "Production Servers"
+    },
+    "type": {
+      "type": "string",
+      "description": "Group type (ORGANIZATIONAL or BALANCING)",
+      "enum": [
+        "ORGANIZATIONAL",
+        "BALANCING"
+      ],
+      "example": "ORGANIZATIONAL"
+    },
+    "parentIdentifier": {
+      "type": "string",
+      "description": "Parent group identifier",
+      "example": "ROOT"
+    },
+    "activeConnections": {
+      "type": "integer",
+      "description": "Total active connections in this group",
+      "example": "3"
+    }
+  }
+}

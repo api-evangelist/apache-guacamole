@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-guacamole/refs/heads/main/json-schema/guacamole-rest-user-group-schema.json",
+  "title": "UserGroup",
+  "description": "Guacamole user group for shared permissions",
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "type": "string",
+      "description": "Unique group identifier",
+      "example": "admins"
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Group attributes",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  }
+}

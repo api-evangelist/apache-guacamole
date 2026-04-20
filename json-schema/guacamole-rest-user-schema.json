@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-guacamole/refs/heads/main/json-schema/guacamole-rest-user-schema.json",
+  "title": "User",
+  "description": "Guacamole user account",
+  "type": "object",
+  "properties": {
+    "username": {
+      "type": "string",
+      "description": "Unique username",
+      "example": "jsmith"
+    },
+    "password": {
+      "type": "string",
+      "description": "User password (write-only)",
+      "example": "securepassword123"
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Additional user attributes",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "lastActive": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Timestamp of last user activity in milliseconds",
+      "example": "1718153645993"
+    }
+  }
+}

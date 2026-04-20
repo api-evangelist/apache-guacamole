@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-guacamole/refs/heads/main/json-schema/guacamole-rest-auth-token-schema.json",
+  "title": "AuthToken",
+  "description": "Authentication token response from Guacamole login",
+  "type": "object",
+  "properties": {
+    "authToken": {
+      "type": "string",
+      "description": "Session authentication token",
+      "example": "abc123def456"
+    },
+    "username": {
+      "type": "string",
+      "description": "Authenticated username",
+      "example": "guacadmin"
+    },
+    "dataSource": {
+      "type": "string",
+      "description": "Default data source identifier",
+      "example": "postgresql"
+    },
+    "availableDataSources": {
+      "type": "array",
+      "description": "List of available data source identifiers",
+      "items": {
+        "type": "string"
+      },
+      "example": [
+        "postgresql"
+      ]
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-guacamole/refs/heads/main/json-structure/guacamole-rest-auth-token-structure.json",
+  "name": "AuthToken",
+  "description": "Authentication token response from Guacamole login",
+  "type": "object",
+  "properties": {
+    "authToken": {
+      "type": "string",
+      "description": "Session authentication token"
+    },
+    "username": {
+      "type": "string",
+      "description": "Authenticated username"
+    },
+    "dataSource": {
+      "type": "string",
+      "description": "Default data source identifier"
+    },
+    "availableDataSources": {
+      "type": "array",
+      "description": "List of available data source identifiers"
+    }
+  }
+}

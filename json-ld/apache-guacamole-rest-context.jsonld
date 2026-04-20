@@ -1,0 +1,85 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "guacamole": "https://guacamole.apache.org/schema/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "AuthToken": "guacamole:AuthToken",
+    "authToken": {
+      "@id": "guacamole:authToken",
+      "@type": "xsd:string"
+    },
+    "username": "schema:name",
+    "dataSource": {
+      "@id": "guacamole:dataSource",
+      "@type": "xsd:string"
+    },
+    "availableDataSources": {
+      "@id": "guacamole:availableDataSources",
+      "@type": "@set"
+    },
+    "Connection": "guacamole:Connection",
+    "identifier": {
+      "@id": "guacamole:identifier",
+      "@type": "xsd:string"
+    },
+    "name": "schema:name",
+    "protocol": {
+      "@id": "guacamole:protocol",
+      "@type": "xsd:string"
+    },
+    "parentIdentifier": {
+      "@id": "guacamole:parentIdentifier",
+      "@type": "xsd:string"
+    },
+    "activeConnections": {
+      "@id": "guacamole:activeConnections",
+      "@type": "xsd:integer"
+    },
+    "parameters": {
+      "@id": "guacamole:parameters",
+      "@type": "@id"
+    },
+    "ConnectionGroup": "guacamole:ConnectionGroup",
+    "type": {
+      "@id": "guacamole:type",
+      "@type": "xsd:string"
+    },
+    "User": "guacamole:User",
+    "password": {
+      "@id": "guacamole:password",
+      "@type": "xsd:string"
+    },
+    "attributes": {
+      "@id": "guacamole:attributes",
+      "@type": "@id"
+    },
+    "lastActive": {
+      "@id": "guacamole:lastActive",
+      "@type": "xsd:integer"
+    },
+    "UserGroup": "guacamole:UserGroup",
+    "ActiveConnection": "guacamole:ActiveConnection",
+    "connectionIdentifier": {
+      "@id": "guacamole:connectionIdentifier",
+      "@type": "xsd:string"
+    },
+    "startDate": {
+      "@id": "guacamole:startDate",
+      "@type": "xsd:integer"
+    },
+    "remoteHost": {
+      "@id": "guacamole:remoteHost",
+      "@type": "xsd:string"
+    },
+    "ConnectionHistoryEntry": "guacamole:ConnectionHistoryEntry",
+    "connectionName": {
+      "@id": "guacamole:connectionName",
+      "@type": "xsd:string"
+    },
+    "endDate": {
+      "@id": "guacamole:endDate",
+      "@type": "xsd:integer"
+    }
+  }
+}

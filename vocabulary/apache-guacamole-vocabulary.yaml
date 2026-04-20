@@ -1,0 +1,144 @@
+vocabulary: "1.0.0"
+info:
+  provider: "Apache Guacamole"
+  description: "Vocabulary taxonomy for Apache Guacamole covering remote desktop connections, users, groups, active sessions, and connection history."
+  created: "2026-04-19"
+  modified: "2026-04-19"
+operational:
+  apis:
+    - namespace: guacamole-rest
+      version: "1.6.0"
+      baseUrl: "http://localhost:8080/guacamole"
+      status: active
+      description: Apache Guacamole REST API
+  resources:
+    - name: connections
+      apis: [guacamole-rest]
+      actions: [list, get, create, update, delete]
+    - name: users
+      apis: [guacamole-rest]
+      actions: [list, get, create, update, delete]
+    - name: user-groups
+      apis: [guacamole-rest]
+      actions: [list, get, create, update, delete]
+    - name: active-connections
+      apis: [guacamole-rest]
+      actions: [list, delete]
+    - name: history
+      apis: [guacamole-rest]
+      actions: [list]
+    - name: connection-groups
+      apis: [guacamole-rest]
+      actions: [list, get, create, update, delete]
+    - name: tokens
+      apis: [guacamole-rest]
+      actions: [create, delete]
+  actions:
+    - name: list
+      httpMethods: [GET]
+      pattern: read
+    - name: get
+      httpMethods: [GET]
+      pattern: read
+    - name: create
+      httpMethods: [POST]
+      pattern: write
+    - name: update
+      httpMethods: [PUT]
+      pattern: write
+    - name: delete
+      httpMethods: [DELETE]
+      pattern: destructive
+  schemas:
+    core:
+      - name: Connection
+        description: Remote desktop connection configuration
+      - name: User
+        description: Guacamole user account
+      - name: UserGroup
+        description: Guacamole user group
+      - name: ActiveConnection
+        description: Currently active remote desktop session
+      - name: ConnectionHistoryEntry
+        description: Historical connection audit record
+      - name: AuthToken
+        description: Authentication session token
+  parameters:
+    identifiers:
+      - name: dataSource
+        description: Guacamole data source identifier
+      - name: connectionId
+        description: Unique connection identifier
+      - name: username
+        description: Guacamole username
+    filters:
+      - name: token
+        description: Authentication token for API calls
+  enums:
+    protocols:
+      - rdp
+      - vnc
+      - ssh
+      - telnet
+      - kubernetes
+    groupTypes:
+      - ORGANIZATIONAL
+      - BALANCING
+  authentication:
+    schemes:
+      - type: Token
+        description: API key token obtained via POST /api/tokens using username/password credentials
+capability:
+  workflows:
+    - name: Remote Access
+      file: capabilities/guacamole-remote-access.yaml
+      description: Manage remote desktop connections, users, and active sessions
+      apis: [guacamole-rest]
+      toolCount: 5
+      personas: [IT Administrator, Security Team]
+      domains: [Remote Access, User Management, Security]
+  personas:
+    - id: it-administrator
+      name: IT Administrator
+      description: Administrators managing remote access infrastructure and user accounts
+      workflows: [Remote Access]
+    - id: security-team
+      name: Security Team
+      description: Security teams monitoring active sessions and auditing connection history
+      workflows: [Remote Access]
+  domains:
+    - name: Remote Access
+      description: Remote desktop connection management via VNC, RDP, SSH protocols
+    - name: User Management
+      description: User and group account administration
+    - name: Security
+      description: Session monitoring, access control, and audit logging
+  namespaces:
+    - name: guacamole-rest
+      type: consumed
+    - name: guacamole-access-api
+      type: rest-exposed
+      port: 8080
+    - name: guacamole-access-mcp
+      type: mcp-exposed
+      port: 9090
+  binds:
+    - name: GUACAMOLE_URL
+      workflows: [Remote Access]
+    - name: GUACAMOLE_TOKEN
+      workflows: [Remote Access]
+    - name: GUACAMOLE_DATA_SOURCE
+      workflows: [Remote Access]
+crossReference:
+  - resource: connections
+    operations: [list-connections, create-connection]
+    workflows: [Remote Access]
+    personas: [IT Administrator]
+  - resource: users
+    operations: [list-users, create-user]
+    workflows: [Remote Access]
+    personas: [IT Administrator]
+  - resource: active-connections
+    operations: [list-active-connections]
+    workflows: [Remote Access]
+    personas: [Security Team, IT Administrator]

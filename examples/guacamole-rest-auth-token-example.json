@@ -1,0 +1,8 @@
+{
+  "authToken": "abc123def456",
+  "username": "guacadmin",
+  "dataSource": "postgresql",
+  "availableDataSources": [
+    "postgresql"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-guacamole/refs/heads/main/json-structure/guacamole-rest-user-group-structure.json",
+  "name": "UserGroup",
+  "description": "Guacamole user group for shared permissions",
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "type": "string",
+      "description": "Unique group identifier"
+    },
+    "attributes": {
+      "type": "object",
+      "description": "Group attributes"
+    }
+  }
+}

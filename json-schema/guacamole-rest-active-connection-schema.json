@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/apache-guacamole/refs/heads/main/json-schema/guacamole-rest-active-connection-schema.json",
+  "title": "ActiveConnection",
+  "description": "An active remote desktop session",
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "type": "string",
+      "description": "Unique active connection identifier",
+      "example": "ac-500123"
+    },
+    "connectionIdentifier": {
+      "type": "string",
+      "description": "Associated connection configuration ID",
+      "example": "1"
+    },
+    "username": {
+      "type": "string",
+      "description": "User who started the session",
+      "example": "jsmith"
+    },
+    "startDate": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Session start time in milliseconds since epoch",
+      "example": "1718153645993"
+    },
+    "remoteHost": {
+      "type": "string",
+      "description": "IP address of the connecting client",
+      "example": "10.0.0.1"
+    }
+  }
+}

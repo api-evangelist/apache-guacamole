@@ -1,0 +1,182 @@
+naftiko: "1.0.0-alpha1"
+info:
+  label: "Apache Guacamole REST API"
+  description: "REST API for managing Apache Guacamole remote desktop gateway including connections, users, groups, and active sessions."
+  tags:
+    - Apache Guacamole
+    - Remote Desktop
+    - VNC
+    - RDP
+    - SSH
+    - Security
+  created: "2026-04-19"
+  modified: "2026-04-19"
+binds:
+  - namespace: env
+    keys:
+      GUACAMOLE_URL: GUACAMOLE_URL
+      GUACAMOLE_USERNAME: GUACAMOLE_USERNAME
+      GUACAMOLE_PASSWORD: GUACAMOLE_PASSWORD
+capability:
+  consumes:
+    - type: http
+      namespace: guacamole-rest
+      baseUri: "http://localhost:8080/guacamole"
+      description: "Apache Guacamole REST API"
+      authentication:
+        type: apikey
+        key: Guacamole-Token
+        value: "{{GUACAMOLE_TOKEN}}"
+        placement: header
+      resources:
+        - name: auth
+          path: /api/tokens
+          description: Authentication management
+          operations:
+            - name: authenticate
+              method: POST
+              description: Authenticate and get session token
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: connections
+          path: /api/session/data/{dataSource}/connections
+          description: Remote connection management
+          operations:
+            - name: list-connections
+              method: GET
+              description: List all remote desktop connections
+              inputParameters:
+                - name: dataSource
+                  in: path
+                  type: string
+                  required: true
+                  description: Data source identifier
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-connection
+              method: POST
+              description: Create a new remote desktop connection
+              inputParameters:
+                - name: dataSource
+                  in: path
+                  type: string
+                  required: true
+                  description: Data source identifier
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: users
+          path: /api/session/data/{dataSource}/users
+          description: User management
+          operations:
+            - name: list-users
+              method: GET
+              description: List all Guacamole users
+              inputParameters:
+                - name: dataSource
+                  in: path
+                  type: string
+                  required: true
+                  description: Data source identifier
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-user
+              method: POST
+              description: Create a new Guacamole user
+              inputParameters:
+                - name: dataSource
+                  in: path
+                  type: string
+                  required: true
+                  description: Data source identifier
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: active-connections
+          path: /api/session/data/{dataSource}/activeConnections
+          description: Active session management
+          operations:
+            - name: list-active-connections
+              method: GET
+              description: List all active remote desktop sessions
+              inputParameters:
+                - name: dataSource
+                  in: path
+                  type: string
+                  required: true
+                  description: Data source identifier
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: guacamole-rest-exposed
+      resources:
+        - path: /v1/connections
+          name: connections
+          description: Guacamole connections
+          operations:
+            - method: GET
+              name: list-connections
+              description: List remote desktop connections
+              call: "guacamole-rest.list-connections"
+              with:
+                dataSource: "rest.dataSource"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+    - type: mcp
+      port: 9100
+      namespace: guacamole-rest-mcp
+      transport: http
+      tools:
+        - name: list-connections
+          description: List all Guacamole remote desktop connections
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "guacamole-rest.list-connections"
+          with:
+            dataSource: "tools.dataSource"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-active-connections
+          description: List all currently active remote desktop sessions
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "guacamole-rest.list-active-connections"
+          with:
+            dataSource: "tools.dataSource"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-users
+          description: List all Guacamole user accounts
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "guacamole-rest.list-users"
+          with:
+            dataSource: "tools.dataSource"
+          outputParameters:
+            - type: object
+              mapping: "$."

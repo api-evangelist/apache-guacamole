@@ -1,0 +1,8 @@
+{
+  "identifier": "1",
+  "name": "My RDP Server",
+  "protocol": "rdp",
+  "parentIdentifier": "ROOT",
+  "activeConnections": "0",
+  "parameters": {}
+}
