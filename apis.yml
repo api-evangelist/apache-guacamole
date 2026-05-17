@@ -40,7 +40,7 @@ apis:
         url: openapi/apache-guacamole-rest-openapi.yml
       - type: JSONSchema
         url: json-schema/guacamole-rest-auth-token-schema.json
-      - type: JSON-LD
+      - type: JSONLD
         url: json-ld/apache-guacamole-rest-context.jsonld
 
   - aid: apache-guacamole:apache-guacamole-javascript-api
