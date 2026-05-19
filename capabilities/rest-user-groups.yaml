@@ -1,0 +1,89 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache Guacamole REST API — User Groups
+  description: 'Apache Guacamole REST API — User Groups. 1 operations. Lead operation: Apache Guacamole List User Groups.
+    Self-contained Naftiko capability covering one Apache Guacamole business surface.'
+  tags:
+  - Apache Guacamole
+  - User Groups
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APACHE_GUACAMOLE_API_KEY: APACHE_GUACAMOLE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-user-groups
+    baseUri: http://localhost:8080/guacamole
+    description: Apache Guacamole REST API — User Groups business capability. Self-contained, no shared references.
+    resources:
+    - name: api-session-data-dataSource-userGroups
+      path: /api/session/data/{dataSource}/userGroups
+      operations:
+      - name: listusergroups
+        method: GET
+        description: Apache Guacamole List User Groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: dataSource
+          in: path
+          type: string
+          description: The data source identifier
+          required: true
+        - name: Guacamole-Token
+          in: header
+          type: string
+          description: Authentication token
+          required: true
+    authentication:
+      type: apikey
+      key: Guacamole-Token
+      value: '{{env.APACHE_GUACAMOLE_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: rest-user-groups-rest
+    port: 8080
+    description: REST adapter for Apache Guacamole REST API — User Groups. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/session/data/{datasource}/usergroups
+      name: api-session-data-datasource-usergroups
+      description: REST surface for api-session-data-dataSource-userGroups.
+      operations:
+      - method: GET
+        name: listusergroups
+        description: Apache Guacamole List User Groups
+        call: rest-user-groups.listusergroups
+        with:
+          dataSource: rest.dataSource
+          Guacamole-Token: rest.Guacamole-Token
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-user-groups-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache Guacamole REST API — User Groups. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: apache-guacamole-list-user-groups
+      description: Apache Guacamole List User Groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-user-groups.listusergroups
+      with:
+        dataSource: tools.dataSource
+        Guacamole-Token: tools.Guacamole-Token
+      outputParameters:
+      - type: object
+        mapping: $.

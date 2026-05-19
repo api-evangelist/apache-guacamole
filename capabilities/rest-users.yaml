@@ -1,0 +1,299 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache Guacamole REST API — Users
+  description: 'Apache Guacamole REST API — Users. 5 operations. Lead operation: Apache Guacamole List Users. Self-contained
+    Naftiko capability covering one Apache Guacamole business surface.'
+  tags:
+  - Apache Guacamole
+  - Users
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APACHE_GUACAMOLE_API_KEY: APACHE_GUACAMOLE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-users
+    baseUri: http://localhost:8080/guacamole
+    description: Apache Guacamole REST API — Users business capability. Self-contained, no shared references.
+    resources:
+    - name: api-session-data-dataSource-users
+      path: /api/session/data/{dataSource}/users
+      operations:
+      - name: listusers
+        method: GET
+        description: Apache Guacamole List Users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: dataSource
+          in: path
+          type: string
+          description: The data source identifier
+          required: true
+        - name: Guacamole-Token
+          in: header
+          type: string
+          description: Authentication token
+          required: true
+      - name: createuser
+        method: POST
+        description: Apache Guacamole Create User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: dataSource
+          in: path
+          type: string
+          description: The data source identifier
+          required: true
+        - name: Guacamole-Token
+          in: header
+          type: string
+          description: Authentication token
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-session-data-dataSource-users-username
+      path: /api/session/data/{dataSource}/users/{username}
+      operations:
+      - name: getuser
+        method: GET
+        description: Apache Guacamole Get User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: dataSource
+          in: path
+          type: string
+          description: The data source identifier
+          required: true
+        - name: username
+          in: path
+          type: string
+          description: The username
+          required: true
+        - name: Guacamole-Token
+          in: header
+          type: string
+          description: Authentication token
+          required: true
+      - name: updateuser
+        method: PUT
+        description: Apache Guacamole Update User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: dataSource
+          in: path
+          type: string
+          description: The data source identifier
+          required: true
+        - name: username
+          in: path
+          type: string
+          description: The username
+          required: true
+        - name: Guacamole-Token
+          in: header
+          type: string
+          description: Authentication token
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteuser
+        method: DELETE
+        description: Apache Guacamole Delete User
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: dataSource
+          in: path
+          type: string
+          description: The data source identifier
+          required: true
+        - name: username
+          in: path
+          type: string
+          description: The username to delete
+          required: true
+        - name: Guacamole-Token
+          in: header
+          type: string
+          description: Authentication token
+          required: true
+    authentication:
+      type: apikey
+      key: Guacamole-Token
+      value: '{{env.APACHE_GUACAMOLE_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: rest-users-rest
+    port: 8080
+    description: REST adapter for Apache Guacamole REST API — Users. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/session/data/{datasource}/users
+      name: api-session-data-datasource-users
+      description: REST surface for api-session-data-dataSource-users.
+      operations:
+      - method: GET
+        name: listusers
+        description: Apache Guacamole List Users
+        call: rest-users.listusers
+        with:
+          dataSource: rest.dataSource
+          Guacamole-Token: rest.Guacamole-Token
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createuser
+        description: Apache Guacamole Create User
+        call: rest-users.createuser
+        with:
+          dataSource: rest.dataSource
+          Guacamole-Token: rest.Guacamole-Token
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/session/data/{datasource}/users/{username}
+      name: api-session-data-datasource-users-username
+      description: REST surface for api-session-data-dataSource-users-username.
+      operations:
+      - method: GET
+        name: getuser
+        description: Apache Guacamole Get User
+        call: rest-users.getuser
+        with:
+          dataSource: rest.dataSource
+          username: rest.username
+          Guacamole-Token: rest.Guacamole-Token
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateuser
+        description: Apache Guacamole Update User
+        call: rest-users.updateuser
+        with:
+          dataSource: rest.dataSource
+          username: rest.username
+          Guacamole-Token: rest.Guacamole-Token
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteuser
+        description: Apache Guacamole Delete User
+        call: rest-users.deleteuser
+        with:
+          dataSource: rest.dataSource
+          username: rest.username
+          Guacamole-Token: rest.Guacamole-Token
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-users-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache Guacamole REST API — Users. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: apache-guacamole-list-users
+      description: Apache Guacamole List Users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-users.listusers
+      with:
+        dataSource: tools.dataSource
+        Guacamole-Token: tools.Guacamole-Token
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-guacamole-create-user
+      description: Apache Guacamole Create User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: rest-users.createuser
+      with:
+        dataSource: tools.dataSource
+        Guacamole-Token: tools.Guacamole-Token
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-guacamole-get-user
+      description: Apache Guacamole Get User
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-users.getuser
+      with:
+        dataSource: tools.dataSource
+        username: tools.username
+        Guacamole-Token: tools.Guacamole-Token
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-guacamole-update-user
+      description: Apache Guacamole Update User
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: rest-users.updateuser
+      with:
+        dataSource: tools.dataSource
+        username: tools.username
+        Guacamole-Token: tools.Guacamole-Token
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-guacamole-delete-user
+      description: Apache Guacamole Delete User
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: rest-users.deleteuser
+      with:
+        dataSource: tools.dataSource
+        username: tools.username
+        Guacamole-Token: tools.Guacamole-Token
+      outputParameters:
+      - type: object
+        mapping: $.
