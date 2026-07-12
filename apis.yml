@@ -58,6 +58,12 @@ apis:
       - type: Documentation
         url: https://guacamole.apache.org/doc/gug/writing-you-own-guacamole-app.html
 common:
+  - type: VulnerabilityDisclosure
+    url: security/apache-guacamole-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/apache-guacamole-domain-security.yml
+  - type: Authentication
+    url: authentication/apache-guacamole-authentication.yml
   - type: Documentation
     url: https://guacamole.apache.org/doc/gug/
   - type: GettingStarted

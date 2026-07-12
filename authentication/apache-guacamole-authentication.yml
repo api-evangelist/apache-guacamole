@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/apache-guacamole-rest-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: GuacamoleToken
+  type: apiKey
+  in: header
+  parameter: Guacamole-Token
+  description: Authentication token obtained from POST /api/tokens
+  sources:
+  - openapi/apache-guacamole-rest-openapi.yml
