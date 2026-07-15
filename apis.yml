@@ -58,6 +58,8 @@ apis:
       - type: Documentation
         url: https://guacamole.apache.org/doc/gug/writing-you-own-guacamole-app.html
 common:
+  - type: AgenticAccess
+    url: agentic-access/apache-guacamole-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/apache-guacamole-vulnerability-disclosure.yml
   - type: DomainSecurity
