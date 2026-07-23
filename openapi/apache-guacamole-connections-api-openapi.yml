@@ -1,0 +1,243 @@
+openapi: 3.0.3
+info:
+  title: Apache Guacamole REST Active Connections API
+  version: 1.6.0
+  description: REST API for managing Apache Guacamole remote desktop gateway including connections, users, user groups, permissions, and active sessions.
+  contact:
+    email: user@guacamole.apache.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080/guacamole
+  description: Apache Guacamole Server
+tags:
+- name: Connections
+  description: Remote desktop connection management
+paths:
+  /api/session/data/{dataSource}/connections:
+    get:
+      operationId: listConnections
+      summary: Apache Guacamole List Connections
+      description: List all remote desktop connections available to the authenticated user.
+      tags:
+      - Connections
+      parameters:
+      - name: dataSource
+        in: path
+        required: true
+        description: The data source identifier (e.g., postgresql, mysql)
+        schema:
+          type: string
+          example: postgresql
+      - name: Guacamole-Token
+        in: header
+        required: true
+        description: Authentication token from /api/tokens
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Connections listed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/Connection'
+        '403':
+          description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createConnection
+      summary: Apache Guacamole Create Connection
+      description: Create a new remote desktop connection.
+      tags:
+      - Connections
+      parameters:
+      - name: dataSource
+        in: path
+        required: true
+        description: The data source identifier
+        schema:
+          type: string
+      - name: Guacamole-Token
+        in: header
+        required: true
+        description: Authentication token
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Connection'
+      responses:
+        '200':
+          description: Connection created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+        '403':
+          description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/session/data/{dataSource}/connections/{connectionId}:
+    get:
+      operationId: getConnection
+      summary: Apache Guacamole Get Connection
+      description: Get details of a specific remote desktop connection.
+      tags:
+      - Connections
+      parameters:
+      - name: dataSource
+        in: path
+        required: true
+        description: The data source identifier
+        schema:
+          type: string
+      - name: connectionId
+        in: path
+        required: true
+        description: The unique connection identifier
+        schema:
+          type: string
+          example: '1'
+      - name: Guacamole-Token
+        in: header
+        required: true
+        description: Authentication token
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Connection retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Connection'
+        '404':
+          description: Connection not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      operationId: updateConnection
+      summary: Apache Guacamole Update Connection
+      description: Update an existing remote desktop connection.
+      tags:
+      - Connections
+      parameters:
+      - name: dataSource
+        in: path
+        required: true
+        description: The data source identifier
+        schema:
+          type: string
+      - name: connectionId
+        in: path
+        required: true
+        description: The unique connection identifier
+        schema:
+          type: string
+      - name: Guacamole-Token
+        in: header
+        required: true
+        description: Authentication token
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Connection'
+      responses:
+        '204':
+          description: Connection updated successfully
+        '404':
+          description: Connection not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteConnection
+      summary: Apache Guacamole Delete Connection
+      description: Delete a remote desktop connection.
+      tags:
+      - Connections
+      parameters:
+      - name: dataSource
+        in: path
+        required: true
+        description: The data source identifier
+        schema:
+          type: string
+      - name: connectionId
+        in: path
+        required: true
+        description: The unique connection identifier
+        schema:
+          type: string
+      - name: Guacamole-Token
+        in: header
+        required: true
+        description: Authentication token
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Connection deleted successfully
+        '404':
+          description: Connection not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Connection:
+      type: object
+      description: Remote desktop connection configuration
+      properties:
+        identifier:
+          type: string
+          description: Unique connection identifier
+          example: '1'
+        name:
+          type: string
+          description: Human-readable connection name
+          example: My RDP Server
+        protocol:
+          type: string
+          description: Remote desktop protocol
+          enum:
+          - rdp
+          - vnc
+          - ssh
+          - telnet
+          - kubernetes
+          example: rdp
+        parentIdentifier:
+          type: string
+          description: Parent connection group identifier (ROOT for top-level)
+          example: ROOT
+        activeConnections:
+          type: integer
+          description: Number of active sessions for this connection
+          example: 0
+        parameters:
+          type: object
+          description: Protocol-specific connection parameters
+          additionalProperties:
+            type: string
+  securitySchemes:
+    GuacamoleToken:
+      type: apiKey
+      in: header
+      name: Guacamole-Token
+      description: Authentication token obtained from POST /api/tokens

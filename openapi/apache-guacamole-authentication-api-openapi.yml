@@ -1,0 +1,95 @@
+openapi: 3.0.3
+info:
+  title: Apache Guacamole REST Active Connections Authentication API
+  version: 1.6.0
+  description: REST API for managing Apache Guacamole remote desktop gateway including connections, users, user groups, permissions, and active sessions.
+  contact:
+    email: user@guacamole.apache.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080/guacamole
+  description: Apache Guacamole Server
+tags:
+- name: Authentication
+  description: Authentication token management
+paths:
+  /api/tokens:
+    post:
+      operationId: createAuthToken
+      summary: Apache Guacamole Create Authentication Token
+      description: Authenticate and create a session token for subsequent API calls.
+      tags:
+      - Authentication
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  description: Guacamole username
+                  example: guacadmin
+                password:
+                  type: string
+                  description: Guacamole password
+                  example: guacadmin
+              required:
+              - username
+              - password
+      responses:
+        '200':
+          description: Authentication successful, token returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthToken'
+              examples:
+                CreateAuthToken200Example:
+                  summary: Default createAuthToken 200 response
+                  x-microcks-default: true
+                  value:
+                    authToken: abc123def456abc123def456abc123def456abc123def456abc123def456abc1
+                    username: guacadmin
+                    dataSource: postgresql
+                    availableDataSources:
+                    - postgresql
+        '403':
+          description: Authentication failed
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    AuthToken:
+      type: object
+      description: Authentication token response from Guacamole login
+      properties:
+        authToken:
+          type: string
+          description: Session authentication token
+          example: abc123def456
+        username:
+          type: string
+          description: Authenticated username
+          example: guacadmin
+        dataSource:
+          type: string
+          description: Default data source identifier
+          example: postgresql
+        availableDataSources:
+          type: array
+          description: List of available data source identifiers
+          items:
+            type: string
+          example:
+          - postgresql
+  securitySchemes:
+    GuacamoleToken:
+      type: apiKey
+      in: header
+      name: Guacamole-Token
+      description: Authentication token obtained from POST /api/tokens

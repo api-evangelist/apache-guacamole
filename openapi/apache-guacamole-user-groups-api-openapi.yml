@@ -1,0 +1,70 @@
+openapi: 3.0.3
+info:
+  title: Apache Guacamole REST Active Connections User Groups API
+  version: 1.6.0
+  description: REST API for managing Apache Guacamole remote desktop gateway including connections, users, user groups, permissions, and active sessions.
+  contact:
+    email: user@guacamole.apache.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080/guacamole
+  description: Apache Guacamole Server
+tags:
+- name: User Groups
+  description: User group management
+paths:
+  /api/session/data/{dataSource}/userGroups:
+    get:
+      operationId: listUserGroups
+      summary: Apache Guacamole List User Groups
+      description: List all user groups in the Guacamole system.
+      tags:
+      - User Groups
+      parameters:
+      - name: dataSource
+        in: path
+        required: true
+        description: The data source identifier
+        schema:
+          type: string
+      - name: Guacamole-Token
+        in: header
+        required: true
+        description: Authentication token
+        schema:
+          type: string
+      responses:
+        '200':
+          description: User groups listed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/UserGroup'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    UserGroup:
+      type: object
+      description: Guacamole user group for shared permissions
+      properties:
+        identifier:
+          type: string
+          description: Unique group identifier
+          example: admins
+        attributes:
+          type: object
+          description: Group attributes
+          additionalProperties:
+            type: string
+  securitySchemes:
+    GuacamoleToken:
+      type: apiKey
+      in: header
+      name: Guacamole-Token
+      description: Authentication token obtained from POST /api/tokens

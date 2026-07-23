@@ -1,0 +1,223 @@
+openapi: 3.0.3
+info:
+  title: Apache Guacamole REST Active Connections Users API
+  version: 1.6.0
+  description: REST API for managing Apache Guacamole remote desktop gateway including connections, users, user groups, permissions, and active sessions.
+  contact:
+    email: user@guacamole.apache.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080/guacamole
+  description: Apache Guacamole Server
+tags:
+- name: Users
+  description: User account management
+paths:
+  /api/session/data/{dataSource}/users:
+    get:
+      operationId: listUsers
+      summary: Apache Guacamole List Users
+      description: List all user accounts in the Guacamole system.
+      tags:
+      - Users
+      parameters:
+      - name: dataSource
+        in: path
+        required: true
+        description: The data source identifier
+        schema:
+          type: string
+      - name: Guacamole-Token
+        in: header
+        required: true
+        description: Authentication token
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Users listed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/User'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createUser
+      summary: Apache Guacamole Create User
+      description: Create a new Guacamole user account.
+      tags:
+      - Users
+      parameters:
+      - name: dataSource
+        in: path
+        required: true
+        description: The data source identifier
+        schema:
+          type: string
+      - name: Guacamole-Token
+        in: header
+        required: true
+        description: Authentication token
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: User created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /api/session/data/{dataSource}/users/{username}:
+    get:
+      operationId: getUser
+      summary: Apache Guacamole Get User
+      description: Get details of a specific Guacamole user account.
+      tags:
+      - Users
+      parameters:
+      - name: dataSource
+        in: path
+        required: true
+        description: The data source identifier
+        schema:
+          type: string
+      - name: username
+        in: path
+        required: true
+        description: The username
+        schema:
+          type: string
+          example: guacadmin
+      - name: Guacamole-Token
+        in: header
+        required: true
+        description: Authentication token
+        schema:
+          type: string
+      responses:
+        '200':
+          description: User retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      operationId: updateUser
+      summary: Apache Guacamole Update User
+      description: Update a Guacamole user account.
+      tags:
+      - Users
+      parameters:
+      - name: dataSource
+        in: path
+        required: true
+        description: The data source identifier
+        schema:
+          type: string
+      - name: username
+        in: path
+        required: true
+        description: The username
+        schema:
+          type: string
+      - name: Guacamole-Token
+        in: header
+        required: true
+        description: Authentication token
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '204':
+          description: User updated successfully
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteUser
+      summary: Apache Guacamole Delete User
+      description: Delete a Guacamole user account.
+      tags:
+      - Users
+      parameters:
+      - name: dataSource
+        in: path
+        required: true
+        description: The data source identifier
+        schema:
+          type: string
+      - name: username
+        in: path
+        required: true
+        description: The username to delete
+        schema:
+          type: string
+      - name: Guacamole-Token
+        in: header
+        required: true
+        description: Authentication token
+        schema:
+          type: string
+      responses:
+        '204':
+          description: User deleted successfully
+        '404':
+          description: User not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    User:
+      type: object
+      description: Guacamole user account
+      properties:
+        username:
+          type: string
+          description: Unique username
+          example: jsmith
+        password:
+          type: string
+          description: User password (write-only)
+          example: securepassword123
+        attributes:
+          type: object
+          description: Additional user attributes
+          additionalProperties:
+            type: string
+        lastActive:
+          type: integer
+          format: int64
+          description: Timestamp of last user activity in milliseconds
+          example: 1718153645993
+  securitySchemes:
+    GuacamoleToken:
+      type: apiKey
+      in: header
+      name: Guacamole-Token
+      description: Authentication token obtained from POST /api/tokens
