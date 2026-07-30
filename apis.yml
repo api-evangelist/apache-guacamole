@@ -5,9 +5,22 @@ description: >-
   requires no plugins or client software and provides access to remote desktops through a web browser with a
   comprehensive REST API for connection, user, and session management.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/apache-guacamole.png
 tags:
   - Apache
   - Open Source
@@ -22,41 +35,115 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/apache-guacamole/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: apache-guacamole:apache-guacamole-rest-api
-    name: Apache Guacamole REST API
-    description: >-
-      REST API for managing connections, users, groups, and active sessions in Apache Guacamole remote desktop gateway,
-      with token-based authentication and per-data-source resource management.
-    humanURL: https://guacamole.apache.org/doc/gug/guacamole-rest-api.html
-    baseURL: http://localhost:8080
-    tags:
-      - Authentication
-      - Connections
-      - Remote Desktop
-      - REST
-      - Users
-    properties:
-      - type: Documentation
-        url: https://guacamole.apache.org/doc/gug/guacamole-rest-api.html
-      - type: OpenAPI
-        url: openapi/apache-guacamole-rest-openapi.yml
-      - type: JSONSchema
-        url: json-schema/guacamole-rest-auth-token-schema.json
-      - type: JSONLD
-        url: json-ld/apache-guacamole-rest-context.jsonld
-  - aid: apache-guacamole:apache-guacamole-javascript-api
-    name: Apache Guacamole JavaScript Client API
-    description: >-
-      JavaScript client library for embedding the Guacamole remote desktop client in web applications, with APIs for
-      protocol tunneling, display rendering, and user input handling.
-    humanURL: https://guacamole.apache.org/doc/gug/writing-you-own-guacamole-app.html
-    tags:
-      - JavaScript
-      - Remote Desktop
-      - SDK
-    properties:
-      - type: Documentation
-        url: https://guacamole.apache.org/doc/gug/writing-you-own-guacamole-app.html
+- aid: apache-guacamole:apache-guacamole-javascript-api
+  name: Apache Guacamole JavaScript Client API
+  description: >-
+    JavaScript client library for embedding the Guacamole remote desktop client in web applications, with
+    APIs for protocol tunneling, display rendering, and user input handling.
+  humanURL: https://guacamole.apache.org/doc/gug/writing-you-own-guacamole-app.html
+  tags:
+  - JavaScript
+  - Remote Desktop
+  - SDK
+  properties:
+  - type: Documentation
+    url: https://guacamole.apache.org/doc/gug/writing-you-own-guacamole-app.html
+- aid: apache-guacamole:apache-guacamole-active-connections-api
+  name: Apache Guacamole Active Connections API
+  description: Active connection session management
+  humanURL: https://guacamole.apache.org/doc/gug/guacamole-rest-api.html
+  baseURL: http://localhost:8080
+  tags:
+  - Active Connections
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-guacamole-active-connections-api-openapi.yml
+  - type: Documentation
+    url: https://guacamole.apache.org/doc/gug/guacamole-rest-api.html
+  - type: JSONSchema
+    url: json-schema/guacamole-rest-auth-token-schema.json
+  - type: JSONLD
+    url: json-ld/apache-guacamole-rest-context.jsonld
+- aid: apache-guacamole:apache-guacamole-authentication-api
+  name: Apache Guacamole Authentication API
+  description: Authentication token management
+  humanURL: https://guacamole.apache.org/doc/gug/guacamole-rest-api.html
+  baseURL: http://localhost:8080
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-guacamole-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://guacamole.apache.org/doc/gug/guacamole-rest-api.html
+  - type: JSONSchema
+    url: json-schema/guacamole-rest-auth-token-schema.json
+  - type: JSONLD
+    url: json-ld/apache-guacamole-rest-context.jsonld
+- aid: apache-guacamole:apache-guacamole-connections-api
+  name: Apache Guacamole Connections API
+  description: Remote desktop connection management
+  humanURL: https://guacamole.apache.org/doc/gug/guacamole-rest-api.html
+  baseURL: http://localhost:8080
+  tags:
+  - Connections
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-guacamole-connections-api-openapi.yml
+  - type: Documentation
+    url: https://guacamole.apache.org/doc/gug/guacamole-rest-api.html
+  - type: JSONSchema
+    url: json-schema/guacamole-rest-auth-token-schema.json
+  - type: JSONLD
+    url: json-ld/apache-guacamole-rest-context.jsonld
+- aid: apache-guacamole:apache-guacamole-history-api
+  name: Apache Guacamole History API
+  description: Connection history and audit logs
+  humanURL: https://guacamole.apache.org/doc/gug/guacamole-rest-api.html
+  baseURL: http://localhost:8080
+  tags:
+  - History
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-guacamole-history-api-openapi.yml
+  - type: Documentation
+    url: https://guacamole.apache.org/doc/gug/guacamole-rest-api.html
+  - type: JSONSchema
+    url: json-schema/guacamole-rest-auth-token-schema.json
+  - type: JSONLD
+    url: json-ld/apache-guacamole-rest-context.jsonld
+- aid: apache-guacamole:apache-guacamole-user-groups-api
+  name: Apache Guacamole User Groups API
+  description: User group management
+  humanURL: https://guacamole.apache.org/doc/gug/guacamole-rest-api.html
+  baseURL: http://localhost:8080
+  tags:
+  - User Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-guacamole-user-groups-api-openapi.yml
+  - type: Documentation
+    url: https://guacamole.apache.org/doc/gug/guacamole-rest-api.html
+  - type: JSONSchema
+    url: json-schema/guacamole-rest-auth-token-schema.json
+  - type: JSONLD
+    url: json-ld/apache-guacamole-rest-context.jsonld
+- aid: apache-guacamole:apache-guacamole-users-api
+  name: Apache Guacamole Users API
+  description: User account management
+  humanURL: https://guacamole.apache.org/doc/gug/guacamole-rest-api.html
+  baseURL: http://localhost:8080
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-guacamole-users-api-openapi.yml
+  - type: Documentation
+    url: https://guacamole.apache.org/doc/gug/guacamole-rest-api.html
+  - type: JSONSchema
+    url: json-schema/guacamole-rest-auth-token-schema.json
+  - type: JSONLD
+    url: json-ld/apache-guacamole-rest-context.jsonld
 common:
   - type: AgenticAccess
     url: agentic-access/apache-guacamole-agentic-access.yml
