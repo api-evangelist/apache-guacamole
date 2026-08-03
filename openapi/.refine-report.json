@@ -1,0 +1,24 @@
+{
+  "provider": "apache-guacamole",
+  "sources": [
+    "apache-guacamole-active-connections-api-openapi.yml",
+    "apache-guacamole-authentication-api-openapi.yml",
+    "apache-guacamole-connections-api-openapi.yml",
+    "apache-guacamole-history-api-openapi.yml",
+    "apache-guacamole-user-groups-api-openapi.yml",
+    "apache-guacamole-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "apache-guacamole-active-connections-api-openapi.yml",
+    "apache-guacamole-authentication-api-openapi.yml",
+    "apache-guacamole-connections-api-openapi.yml",
+    "apache-guacamole-history-api-openapi.yml",
+    "apache-guacamole-user-groups-api-openapi.yml",
+    "apache-guacamole-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
