@@ -145,6 +145,13 @@ apis:
   - type: JSONLD
     url: json-ld/apache-guacamole-rest-context.jsonld
 common:
+  - type: CodeOfConduct
+    url: https://github.com/apache/.github/blob/main/.github/CODE_OF_CONDUCT.md
+  - type: ContributionGuide
+    url: https://github.com/apache/guacamole-client/blob/main/CONTRIBUTING
+  - type: License
+    name: Apache-2.0
+    url: https://github.com/apache/guacamole-client/blob/main/LICENSE
   - type: AgenticAccess
     url: agentic-access/apache-guacamole-agentic-access.yml
   - type: VulnerabilityDisclosure
