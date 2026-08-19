@@ -1,0 +1,138 @@
+{
+  "item": [
+    {
+      "id": "885c42ee-1b3b-4de0-9a9c-61f8595ec263",
+      "name": "Active Connections",
+      "description": {
+        "content": "Active connection session management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d8281052-0503-46fa-a3f1-4eca31f7aea9",
+          "name": "Apache Guacamole List Active Connections",
+          "request": {
+            "name": "Apache Guacamole List Active Connections",
+            "description": {
+              "content": "List all currently active remote desktop sessions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "session",
+                "data",
+                ":dataSource",
+                "activeConnections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataSource",
+                  "description": "(Required) The data source identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Authentication token",
+                "key": "Guacamole-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b912c95c-cfcf-44e4-bf26-60eb054d85e0",
+              "name": "Active connections listed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "session",
+                    "data",
+                    ":dataSource",
+                    "activeConnections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataSource",
+                      "description": "(Required) The data source identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Authentication token",
+                    "key": "Guacamole-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": {\n    \"identifier\": \"ac-500123\",\n    \"connectionIdentifier\": \"1\",\n    \"username\": \"jsmith\",\n    \"startDate\": 1718153645993,\n    \"remoteHost\": \"10.0.0.1\"\n  },\n  \"key_1\": {\n    \"identifier\": \"ac-500123\",\n    \"connectionIdentifier\": \"1\",\n    \"username\": \"jsmith\",\n    \"startDate\": 1718153645993,\n    \"remoteHost\": \"10.0.0.1\"\n  },\n  \"key_2\": {\n    \"identifier\": \"ac-500123\",\n    \"connectionIdentifier\": \"1\",\n    \"username\": \"jsmith\",\n    \"startDate\": 1718153645993,\n    \"remoteHost\": \"10.0.0.1\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080/guacamole",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c8ccb624-9f96-4ba9-9e95-f636496dda0d",
+    "name": "Apache Guacamole REST Active Connections API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing Apache Guacamole remote desktop gateway including connections, users, user groups, permissions, and active sessions.\n\nContact Support:\n Email: user@guacamole.apache.org",
+      "type": "text/plain"
+    }
+  }
+}

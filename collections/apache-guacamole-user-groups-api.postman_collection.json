@@ -1,0 +1,138 @@
+{
+  "item": [
+    {
+      "id": "7e979bfd-6fb6-434a-8e64-2ab67068e054",
+      "name": "User Groups",
+      "description": {
+        "content": "User group management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f652c7a8-ef7f-4a01-b833-70f451f548d2",
+          "name": "Apache Guacamole List User Groups",
+          "request": {
+            "name": "Apache Guacamole List User Groups",
+            "description": {
+              "content": "List all user groups in the Guacamole system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "session",
+                "data",
+                ":dataSource",
+                "userGroups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataSource",
+                  "description": "(Required) The data source identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Authentication token",
+                "key": "Guacamole-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9d1081b1-61be-4597-9878-ee3d648888b5",
+              "name": "User groups listed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "session",
+                    "data",
+                    ":dataSource",
+                    "userGroups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataSource",
+                      "description": "(Required) The data source identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Authentication token",
+                    "key": "Guacamole-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": {\n    \"identifier\": \"admins\",\n    \"attributes\": {\n      \"key_0\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080/guacamole",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e77c938c-76c8-4703-8cc6-11569533b9c2",
+    "name": "Apache Guacamole REST Active Connections User Groups API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing Apache Guacamole remote desktop gateway including connections, users, user groups, permissions, and active sessions.\n\nContact Support:\n Email: user@guacamole.apache.org",
+      "type": "text/plain"
+    }
+  }
+}

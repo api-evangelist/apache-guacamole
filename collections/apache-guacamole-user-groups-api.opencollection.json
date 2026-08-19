@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Guacamole REST Active Connections User Groups API",
+    "version": "1.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "User Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Guacamole List User Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/guacamole/api/session/data/:dataSource/userGroups",
+            "headers": [
+              {
+                "name": "Guacamole-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataSource",
+                "value": "",
+                "type": "path",
+                "description": "The data source identifier"
+              }
+            ]
+          },
+          "docs": "List all user groups in the Guacamole system."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

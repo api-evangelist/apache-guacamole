@@ -1,0 +1,169 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Guacamole REST Active Connections API",
+    "version": "1.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Connections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Guacamole List Connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/guacamole/api/session/data/:dataSource/connections",
+            "headers": [
+              {
+                "name": "Guacamole-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataSource",
+                "value": "",
+                "type": "path",
+                "description": "The data source identifier (e.g., postgresql, mysql)"
+              }
+            ]
+          },
+          "docs": "List all remote desktop connections available to the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Apache Guacamole Create Connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/guacamole/api/session/data/:dataSource/connections",
+            "headers": [
+              {
+                "name": "Guacamole-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataSource",
+                "value": "",
+                "type": "path",
+                "description": "The data source identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new remote desktop connection."
+        },
+        {
+          "info": {
+            "name": "Apache Guacamole Get Connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/guacamole/api/session/data/:dataSource/connections/:connectionId",
+            "headers": [
+              {
+                "name": "Guacamole-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataSource",
+                "value": "",
+                "type": "path",
+                "description": "The data source identifier"
+              },
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique connection identifier"
+              }
+            ]
+          },
+          "docs": "Get details of a specific remote desktop connection."
+        },
+        {
+          "info": {
+            "name": "Apache Guacamole Update Connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8080/guacamole/api/session/data/:dataSource/connections/:connectionId",
+            "headers": [
+              {
+                "name": "Guacamole-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataSource",
+                "value": "",
+                "type": "path",
+                "description": "The data source identifier"
+              },
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique connection identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing remote desktop connection."
+        },
+        {
+          "info": {
+            "name": "Apache Guacamole Delete Connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8080/guacamole/api/session/data/:dataSource/connections/:connectionId",
+            "headers": [
+              {
+                "name": "Guacamole-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataSource",
+                "value": "",
+                "type": "path",
+                "description": "The data source identifier"
+              },
+              {
+                "name": "connectionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique connection identifier"
+              }
+            ]
+          },
+          "docs": "Delete a remote desktop connection."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

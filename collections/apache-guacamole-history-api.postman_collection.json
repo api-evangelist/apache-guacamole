@@ -1,0 +1,140 @@
+{
+  "item": [
+    {
+      "id": "ad198c91-dc50-499a-97c8-1a747396107b",
+      "name": "History",
+      "description": {
+        "content": "Connection history and audit logs",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d59c671e-eb0e-4239-931d-d4fafda10011",
+          "name": "Apache Guacamole List Connection History",
+          "request": {
+            "name": "Apache Guacamole List Connection History",
+            "description": {
+              "content": "List connection history records for audit and reporting.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "session",
+                "data",
+                ":dataSource",
+                "history",
+                "connections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "dataSource",
+                  "description": "(Required) The data source identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Authentication token",
+                "key": "Guacamole-Token",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "da4d0c8e-8012-4ef4-bf59-58fd2b1d6e17",
+              "name": "Connection history retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "session",
+                    "data",
+                    ":dataSource",
+                    "history",
+                    "connections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "dataSource",
+                      "description": "(Required) The data source identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Authentication token",
+                    "key": "Guacamole-Token",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"identifier\": \"hist-500123\",\n    \"connectionIdentifier\": \"1\",\n    \"connectionName\": \"My RDP Server\",\n    \"username\": \"jsmith\",\n    \"startDate\": 1718153645993,\n    \"endDate\": 1718157245993\n  },\n  {\n    \"identifier\": \"hist-500123\",\n    \"connectionIdentifier\": \"1\",\n    \"connectionName\": \"My RDP Server\",\n    \"username\": \"jsmith\",\n    \"startDate\": 1718153645993,\n    \"endDate\": 1718157245993\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080/guacamole",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0162cc8e-40ff-47e4-a350-3ef21665c67f",
+    "name": "Apache Guacamole REST Active Connections History API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing Apache Guacamole remote desktop gateway including connections, users, user groups, permissions, and active sessions.\n\nContact Support:\n Email: user@guacamole.apache.org",
+      "type": "text/plain"
+    }
+  }
+}

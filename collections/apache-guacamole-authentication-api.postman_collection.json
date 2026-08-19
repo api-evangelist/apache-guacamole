@@ -1,0 +1,199 @@
+{
+  "item": [
+    {
+      "id": "b75079ff-b379-44ee-835d-9915d78ac323",
+      "name": "Authentication",
+      "description": {
+        "content": "Authentication token management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2486d9cb-05a0-4b9d-9005-633a1f084c6c",
+          "name": "Apache Guacamole Create Authentication Token",
+          "request": {
+            "name": "Apache Guacamole Create Authentication Token",
+            "description": {
+              "content": "Authenticate and create a session token for subsequent API calls.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "username",
+                  "value": "<string>",
+                  "description": "(Required) Guacamole username"
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "(Required) Guacamole password"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a4dce934-ef9c-4d44-955b-cc59323590df",
+              "name": "Authentication successful, token returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Guacamole username",
+                        "type": "text/plain"
+                      },
+                      "key": "username",
+                      "value": "guacadmin"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Guacamole password",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "guacadmin"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"authToken\": \"abc123def456abc123def456abc123def456abc123def456abc123def456abc1\",\n  \"username\": \"guacadmin\",\n  \"dataSource\": \"postgresql\",\n  \"availableDataSources\": [\n    \"postgresql\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2abc21c8-9570-4cde-9ab6-f7a98a0b9c14",
+              "name": "Authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Guacamole username",
+                        "type": "text/plain"
+                      },
+                      "key": "username",
+                      "value": "guacadmin"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Guacamole password",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "guacadmin"
+                    }
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080/guacamole",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fcc366d2-e2ad-4c5d-856e-e6053035bb4f",
+    "name": "Apache Guacamole REST Active Connections Authentication API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for managing Apache Guacamole remote desktop gateway including connections, users, user groups, permissions, and active sessions.\n\nContact Support:\n Email: user@guacamole.apache.org",
+      "type": "text/plain"
+    }
+  }
+}

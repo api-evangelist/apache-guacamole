@@ -1,0 +1,169 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Guacamole REST Active Connections Users API",
+    "version": "1.6.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Guacamole List Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/guacamole/api/session/data/:dataSource/users",
+            "headers": [
+              {
+                "name": "Guacamole-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataSource",
+                "value": "",
+                "type": "path",
+                "description": "The data source identifier"
+              }
+            ]
+          },
+          "docs": "List all user accounts in the Guacamole system."
+        },
+        {
+          "info": {
+            "name": "Apache Guacamole Create User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/guacamole/api/session/data/:dataSource/users",
+            "headers": [
+              {
+                "name": "Guacamole-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataSource",
+                "value": "",
+                "type": "path",
+                "description": "The data source identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Guacamole user account."
+        },
+        {
+          "info": {
+            "name": "Apache Guacamole Get User",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/guacamole/api/session/data/:dataSource/users/:username",
+            "headers": [
+              {
+                "name": "Guacamole-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataSource",
+                "value": "",
+                "type": "path",
+                "description": "The data source identifier"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "The username"
+              }
+            ]
+          },
+          "docs": "Get details of a specific Guacamole user account."
+        },
+        {
+          "info": {
+            "name": "Apache Guacamole Update User",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8080/guacamole/api/session/data/:dataSource/users/:username",
+            "headers": [
+              {
+                "name": "Guacamole-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataSource",
+                "value": "",
+                "type": "path",
+                "description": "The data source identifier"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "The username"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Guacamole user account."
+        },
+        {
+          "info": {
+            "name": "Apache Guacamole Delete User",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8080/guacamole/api/session/data/:dataSource/users/:username",
+            "headers": [
+              {
+                "name": "Guacamole-Token",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "dataSource",
+                "value": "",
+                "type": "path",
+                "description": "The data source identifier"
+              },
+              {
+                "name": "username",
+                "value": "",
+                "type": "path",
+                "description": "The username to delete"
+              }
+            ]
+          },
+          "docs": "Delete a Guacamole user account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
