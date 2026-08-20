@@ -23,6 +23,15 @@ access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/apache-guacamole.png
 tags:
   - Apache
+  - Open-Source
+  - RDP
+  - Remote Access
+  - Remote Desktop
+  - SSH
+  - VNC
+  - Web Gateway
+tags_raw:
+  - Apache
   - Open Source
   - RDP
   - Remote Access
@@ -134,6 +143,8 @@ apis:
   humanURL: https://guacamole.apache.org/doc/gug/guacamole-rest-api.html
   baseURL: http://localhost:8080
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
