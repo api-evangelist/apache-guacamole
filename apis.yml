@@ -5,6 +5,19 @@ description: >-
   requires no plugins or client software and provides access to remote desktops through a web browser with a
   comprehensive REST API for connection, user, and session management.
 type: Index
+deliveryModel:
+  model: self-hosted
+  license: Apache-2.0
+  open_source: true
+  commercial: false
+  callable_host: false
+  label: Self-hosted open source · you run it yourself
+  confidence: high
+  source:
+  - license
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
