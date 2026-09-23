@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Apache Guacamole REST Active Connections Authentication API
+  title: Apache Guacamole REST Authentication API
   version: 1.6.0
   description: REST API for managing Apache Guacamole remote desktop gateway including connections, users, user groups, permissions, and active sessions.
   contact:

@@ -1,12 +1,7 @@
 {
   "provider": "apache-guacamole",
   "sources": [
-    "apache-guacamole-active-connections-api-openapi.yml",
-    "apache-guacamole-authentication-api-openapi.yml",
-    "apache-guacamole-connections-api-openapi.yml",
-    "apache-guacamole-history-api-openapi.yml",
-    "apache-guacamole-user-groups-api-openapi.yml",
-    "apache-guacamole-users-api-openapi.yml"
+    "_original/apache-guacamole-rest-openapi.yml"
   ],
   "outputs": [
     "apache-guacamole-active-connections-api-openapi.yml",
@@ -19,6 +14,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "apache-guacamole-rest-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "apache-guacamole-active-connections-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "apache-guacamole-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "apache-guacamole-connections-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "apache-guacamole-history-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "apache-guacamole-user-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "apache-guacamole-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
