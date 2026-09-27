@@ -38,7 +38,7 @@ access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/apache-guacamole.png
 tags:
   - Apache
-  - Open-Source
+  - Open Source
   - RDP
   - Remote Access
   - Remote Desktop
@@ -54,6 +54,7 @@ tags_raw:
   - SSH
   - VNC
   - Web Gateway
+  - Open-Source
 created: '2026-03-16'
 modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/apache-guacamole/refs/heads/main/apis.yml
