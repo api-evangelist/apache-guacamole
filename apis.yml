@@ -172,6 +172,9 @@ apis:
   - type: JSONLD
     url: json-ld/apache-guacamole-rest-context.jsonld
 common:
+  - type: CapabilityMap
+    url: capabilities/apache-guacamole-capability-edges.yml
+    name: Apache Guacamole Business Capability Map
   - type: Website
     url: https://www.apache.org/
   - type: CodeOfConduct
