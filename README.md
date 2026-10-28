@@ -1,4 +1,4 @@
-# Apache Guacamole (apache-guacamole)
+# Apache Guacamole
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,87 +66,183 @@
 
 Apache Guacamole is a clientless remote desktop gateway that supports standard protocols like VNC, RDP, and SSH. It requires no plugins or client software and provides access to remote desktops through a web browser with a comprehensive REST API for connection, user, and session management.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/apache-guacamole/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/apache-guacamole/refs/heads/main/apis.yml)
+**Areas:** Apache · Open Source · RDP · Remote Access · Remote Desktop · SSH · VNC · Web Gateway
 
-## Scope
+## Apache Guacamole on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Apache Guacamole is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/apache-guacamole/](https://apis.io/providers/apache-guacamole/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (7)
 
-- Apache
-- Open Source
-- RDP
-- Remote Access
-- Remote Desktop
-- SSH
-- VNC
-- Web Gateway
+- [Apache Guacamole JavaScript Client API](https://apis.io/apis/apache-guacamole/apache-guacamole-javascript-api/) — JavaScript client library for embedding the Guacamole remote desktop client in web applications, with APIs for protocol tunneling, display rendering, and…
+- [Apache Guacamole Active Connections API](https://apis.io/apis/apache-guacamole/apache-guacamole-active-connections-api/) — Active connection session management
+- [Apache Guacamole Authentication API](https://apis.io/apis/apache-guacamole/apache-guacamole-authentication-api/) — Authentication token management
+- [Apache Guacamole Connections API](https://apis.io/apis/apache-guacamole/apache-guacamole-connections-api/) — Remote desktop connection management
+- [Apache Guacamole History API](https://apis.io/apis/apache-guacamole/apache-guacamole-history-api/) — Connection history and audit logs
+- [Apache Guacamole User Groups API](https://apis.io/apis/apache-guacamole/apache-guacamole-user-groups-api/) — User group management
+- [Apache Guacamole Users API](https://apis.io/apis/apache-guacamole/apache-guacamole-users-api/) — User account management
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-16
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Apache Guacamole REST API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-REST API for managing connections, users, groups, and active sessions in Apache Guacamole remote desktop gateway, with token-based authentication and per-data-source resource management.
+- [Apache Guacamole Agentic Access](https://apis.io/agentic-access/apache-guacamole/apache-guacamole-agentic-access/)
 
-- **Human URL:** [https://guacamole.apache.org/doc/gug/guacamole-rest-api.html](https://guacamole.apache.org/doc/gug/guacamole-rest-api.html)
-- **Base URL:** `http://localhost:8080`
+#### JSON Schema (7)
 
-#### Tags
+The data models the API reads and writes.
 
-- Authentication
-- Connections
-- Remote Desktop
-- REST
-- Users
+- [ActiveConnection](https://apis.io/schemas/apache-guacamole/guacamole-rest-active-connection/)
+- [AuthToken](https://apis.io/schemas/apache-guacamole/guacamole-rest-auth-token/)
+- [Connection](https://apis.io/schemas/apache-guacamole/guacamole-rest-connection/)
+- [ConnectionGroup](https://apis.io/schemas/apache-guacamole/guacamole-rest-connection-group/)
+- [ConnectionHistoryEntry](https://apis.io/schemas/apache-guacamole/guacamole-rest-connection-history-entry/)
+- [User](https://apis.io/schemas/apache-guacamole/guacamole-rest-user/)
+- [UserGroup](https://apis.io/schemas/apache-guacamole/guacamole-rest-user-group/)
 
-#### Properties
+#### JSON Structure (7)
 
-- [Documentation](https://guacamole.apache.org/doc/gug/guacamole-rest-api.html)
-- [OpenAPI](openapi/apache-guacamole-rest-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/apache-guacamole-rest.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/apache-guacamole-rest.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/guacamole-rest-auth-token-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/apache-guacamole-rest-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+Data models expressed in JSON Structure.
 
-### Apache Guacamole JavaScript Client API
+- [Guacamole Rest Active Connection Structure](https://apis.io/json-structure/apache-guacamole/guacamole-rest-active-connection-structure/)
+- [Guacamole Rest Auth Token Structure](https://apis.io/json-structure/apache-guacamole/guacamole-rest-auth-token-structure/)
+- [Guacamole Rest Connection Group Structure](https://apis.io/json-structure/apache-guacamole/guacamole-rest-connection-group-structure/)
+- [Guacamole Rest Connection History Entry Structure](https://apis.io/json-structure/apache-guacamole/guacamole-rest-connection-history-entry-structure/)
+- [Guacamole Rest Connection Structure](https://apis.io/json-structure/apache-guacamole/guacamole-rest-connection-structure/)
+- [Guacamole Rest User Group Structure](https://apis.io/json-structure/apache-guacamole/guacamole-rest-user-group-structure/)
+- [Guacamole Rest User Structure](https://apis.io/json-structure/apache-guacamole/guacamole-rest-user-structure/)
 
-JavaScript client library for embedding the Guacamole remote desktop client in web applications, with APIs for protocol tunneling, display rendering, and user input handling.
+#### JSON-LD (1)
 
-- **Human URL:** [https://guacamole.apache.org/doc/gug/writing-you-own-guacamole-app.html](https://guacamole.apache.org/doc/gug/writing-you-own-guacamole-app.html)
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Apache Guacamole Rest Context](https://apis.io/jsonld/apache-guacamole/apache-guacamole-rest-context/)
 
-- JavaScript
-- Remote Desktop
-- SDK
+#### Vocabulary (1)
 
-#### Properties
+The provider's domain terms, defined.
 
-- [Documentation](https://guacamole.apache.org/doc/gug/writing-you-own-guacamole-app.html)
-- [Postman Collection](collections/apache-guacamole-rest.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/apache-guacamole-rest.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Apache Guacamole Vocabulary](https://apis.io/vocabularies/apache-guacamole/apache-guacamole-vocabulary/)
 
-## Common Properties
+#### Examples (7)
 
+Example requests and responses.
+
+- [Guacamole Rest Active Connection Example](https://apis.io/examples/apache-guacamole/guacamole-rest-active-connection-example/)
+- [Guacamole Rest Auth Token Example](https://apis.io/examples/apache-guacamole/guacamole-rest-auth-token-example/)
+- [Guacamole Rest Connection Example](https://apis.io/examples/apache-guacamole/guacamole-rest-connection-example/)
+- [Guacamole Rest Connection Group Example](https://apis.io/examples/apache-guacamole/guacamole-rest-connection-group-example/)
+- [Guacamole Rest Connection History Entry Example](https://apis.io/examples/apache-guacamole/guacamole-rest-connection-history-entry-example/)
+- [Guacamole Rest User Example](https://apis.io/examples/apache-guacamole/guacamole-rest-user-example/)
+- [Guacamole Rest User Group Example](https://apis.io/examples/apache-guacamole/guacamole-rest-user-group-example/)
+
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [Apache Guacamole REST Active Connections API](https://apis.io/collections/apache-guacamole/open-apache-guacamole-active-connections-api/)
+- [Apache Guacamole REST Active Connections Authentication API](https://apis.io/collections/apache-guacamole/open-apache-guacamole-authentication-api/)
+- [Apache Guacamole REST Active Connections API](https://apis.io/collections/apache-guacamole/open-apache-guacamole-connections-api/)
+- [Apache Guacamole REST Active Connections History API](https://apis.io/collections/apache-guacamole/open-apache-guacamole-history-api/)
+- [Apache Guacamole REST API](https://apis.io/collections/apache-guacamole/open-apache-guacamole-rest/)
+- [Apache Guacamole REST Active Connections User Groups API](https://apis.io/collections/apache-guacamole/open-apache-guacamole-user-groups-api/)
+- [Apache Guacamole REST Active Connections Users API](https://apis.io/collections/apache-guacamole/open-apache-guacamole-users-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Apache Guacamole — jsonschema rules](https://apis.io/rules/apache-guacamole/apache-guacamole-jsonschema-spectral-rules/)
+- [Apache Guacamole API Rules](https://apis.io/rules/apache-guacamole/apache-guacamole-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Apache Guacamole Authentication](https://apis.io/security/apache-guacamole/apache-guacamole-authentication/)
+- [Apache Guacamole Domain Security](https://apis.io/security/apache-guacamole/apache-guacamole-domain-security/)
+- [Apache Guacamole Vulnerability Disclosure](https://apis.io/security/apache-guacamole/apache-guacamole-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Apache Guacamole Plans Pricing](https://apis.io/plans/apache-guacamole/apache-guacamole-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Apache Guacamole Rate Limits](https://apis.io/rate-limits/apache-guacamole/apache-guacamole-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Apache Guacamole Finops](https://apis.io/finops/apache-guacamole/apache-guacamole-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.apache.org/)
 - [Documentation](https://guacamole.apache.org/doc/gug/)
-- [Getting Started](https://guacamole.apache.org/doc/gug/users-guide.html)
-- [GitHub Organization](https://github.com/apache)
-- [GitHub Repository](https://github.com/apache/guacamole-client)
-- [Spectral Rules](rules/apache-guacamole-spectral-rules.yml)
-- [Vocabulary](vocabulary/apache-guacamole-vocabulary.yaml)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
+- [Getting started](https://guacamole.apache.org/doc/gug/users-guide.html)
+- [GitHub](https://github.com/apache)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** info@apievangelist.com
+**Kin Score 31.0** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 53.4 |
+| Contract governance | 27.3 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 21.4 |
+| Access clarity | 7.9 |
+
+**Agent readiness 20.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 22.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/apache-guacamole/](https://apis.io/providers/apache-guacamole/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Apache Guacamole: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/apache-guacamole/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
